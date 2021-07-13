@@ -1,6 +1,8 @@
 .env
 .env-test
 
+python/db/mysql
+
 # Node
 node_modules/
 
