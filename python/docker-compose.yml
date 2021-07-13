@@ -8,8 +8,8 @@ services:
     environment:
       DB_URL: "mysql+pymysql://trello:trello@db/trello"
     build:
-      dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
-      context: ../../
+      dockerfile: ./docker/web/Dockerfile
+      context: ./
     depends_on:
       - db
     ports:
