@@ -1,5 +1,5 @@
 FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y mariadb-client nodejs
+RUN apt-get update -qq && apt-get install -y nodejs
 
 RUN mkdir /hubspot-api-client
 
@@ -8,7 +8,7 @@ ADD ./ /hubspot-api-client
 WORKDIR /hubspot-api-client
 RUN gem install bundler
 RUN bundle install
-RUN rails db:create
+# RUN rails db:create
 RUN rails db:migrate RAILS_ENV=development
 
 # Add a script to be executed every time the container starts.

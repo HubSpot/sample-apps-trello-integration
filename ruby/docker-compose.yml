@@ -27,9 +27,9 @@ services:
       driver: none
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: trello_integration_development
-      MYSQL_USER: trello_integration
-      MYSQL_PASSWORD: trello_integration
+      MYSQL_DATABASE: trello
+      MYSQL_USER: trello
+      MYSQL_PASSWORD: trello
   ngrok:
     image: gtriggiano/ngrok-tunnel
     ports:
