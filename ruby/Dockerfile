@@ -8,8 +8,6 @@ ADD ./ /hubspot-api-client
 WORKDIR /hubspot-api-client
 RUN gem install bundler
 RUN bundle install
-# RUN rails db:create
-RUN rails db:migrate RAILS_ENV=development
 
 # Add a script to be executed every time the container starts.
 COPY ./docker-entrypoint.sh /usr/bin/

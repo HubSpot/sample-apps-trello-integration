@@ -44,16 +44,16 @@ module Services
               card_patch_request: card_patch_request,
             )
           else
-            card_create_request = ::Hubspot::Crm::Extensions::Cards::CardCreateRequest.new(
+            card_create_request = {
               title: ExtensionCard::CARD_TITLE,
               fetch: fetch,
               actions: actions,
               display: ::Hubspot::Crm::Extensions::Cards::CardDisplayBody.new
-            )
+            }.to_json
 
             response = ::Hubspot::Crm::Extensions::Cards::CardsApi.new.create(
               ENV['HUBSPOT_APPLICATION_ID'],
-              card_create_request: card_create_request
+              card_create_request
             )
 
             ExtensionCard.create!(card_id_key: ExtensionCard::CARD_ID_KEY, card_id: response.id)
