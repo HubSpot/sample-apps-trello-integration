@@ -23,4 +23,5 @@ cp node/.env.template node/.env
 
 ## Supported languages
 
+* [Ruby](ruby/README.md)
 * [Python](python/README.md)
