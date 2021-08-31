@@ -14,7 +14,7 @@ This is a sample app for the HubSpot [client libraries](https://developers.hubsp
 3. Copy the .env.template file into a file named .env in the folder of the language you want to use. For example:
 
 ```bash
-cp node/.env.template node/.env
+cp ruby/.env.template ruby/.env
 ```
 
 4. Paste your HubSpot API Key as the value for HUBSPOT_API_KEY in .env
@@ -23,5 +23,6 @@ cp node/.env.template node/.env
 
 ## Supported languages
 
-* [Ruby](ruby/README.md)
+* [Php](php/README.md)
 * [Python](python/README.md)
+* [Ruby](ruby/README.md)
