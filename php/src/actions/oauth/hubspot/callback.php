@@ -5,7 +5,7 @@ use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use HubSpot\Factory;
 
 // https://developers.hubspot.com/docs-beta/working-with-oauth
-$token = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
+$token = Factory::create()->auth()->oAuth()->tokensApi()->createToken(
     'authorization_code',
     $_GET['code'],
     OAuth2Helper::getRedirectUri(),

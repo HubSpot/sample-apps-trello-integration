@@ -12,14 +12,18 @@ Please see the documentation on [Creating an app in HubSpot](https://developers.
 
 ### Setup App
 
-Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
+Make sure you have:
+  - [Docker Compose](https://docs.docker.com/compose/) installed
+  - [Ngrok account](https://ngrok.com/)
+  - [Trello account](https://trello.com/)
 
 ### Configure
 
 1. Copy .env.template to .env
-2. Paste your HUBSPOT_CLIENT_ID, HUBSPOT_CLIENT_SECRET, HUBSPOT_APPLICATION_ID and HUBSPOT_DEVELOPER_API_KEY
-3. Paste youк TRELLO_API_KEY. You can obtain it from [https://trello.com/app-key](https://trello.com/app-key)
-4. Go to [https://trello.com/app-key](https://trello.com/app-key) page and paste https://*.ngrok.io to "New Allowed Origin" ("Allowed Resources" section)
+2. Paste your Ngrok authtoken to NGROK_AUTHTOKEN in .env
+3. Paste your HUBSPOT_CLIENT_ID, HUBSPOT_CLIENT_SECRET, HUBSPOT_APPLICATION_ID and HUBSPOT_DEVELOPER_API_KEY
+4. Paste youк TRELLO_API_KEY. You can obtain it from [https://trello.com/app-key](https://trello.com/app-key)
+5. Go to [https://trello.com/app-key](https://trello.com/app-key) page and paste https://*.ngrok.io to "New Allowed Origin" ("Allowed Resources" section)
 
 ### Running
 
