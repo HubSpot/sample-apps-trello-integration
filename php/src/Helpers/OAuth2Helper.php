@@ -57,13 +57,13 @@ class OAuth2Helper
         $token = static::getToken();
 
         if (time() > $token['expires_at']) {
-            $response = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
+            $response = Factory::create()->auth()->oAuth()->tokensApi()->createToken(
                 'refresh_token',
                 null,
-                null,
+                static::getRedirectUri(),
                 static::getClientId(),
                 static::getClientSecret(),
-                $token['refresh_token']
+                $tokens['refresh_token']
             );
 
             SettingsRepository::save(
