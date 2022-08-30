@@ -30,10 +30,10 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./src:/trello-integration-sample-app/src
-      - /trello-integration-sample-app/src/node_modules
-      - ./db:/trello-integration-sample-app/db
-      - ./tools:/trello-integration-sample-app/tools
+      - ./src:/app/src
+      - /app/src/node_modules
+      - ./db:/app/db
+      - ./tools:/app/tools
     ports:
       - 3000:3000
     command: ../tools/wait-for-it.sh db:3306 -t 60 --strict -- npm run dev

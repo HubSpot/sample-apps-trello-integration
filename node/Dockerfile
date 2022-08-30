@@ -1,6 +1,6 @@
 FROM node:10
 
-WORKDIR /trello-integration-sample-app/src
+WORKDIR /app/src
 COPY src/package.json ./
 RUN npm install
 
