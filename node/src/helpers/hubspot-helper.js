@@ -66,7 +66,7 @@ module.exports = {
         const response = await client.crm.pipelines.pipelinesApi.getAll(DEAL_OBJECT_TYPE)
         responseHelper.logResponse(response)
 
-        return response.body.results
+        return response.results
     },
     getPipelineStages: async (pipelineId) => {
         const client = await hubspotClientHelper.getClient()
@@ -78,7 +78,7 @@ module.exports = {
         const response = await client.crm.pipelines.pipelinesApi.getById(DEAL_OBJECT_TYPE, pipelineId)
         responseHelper.logResponse(response)
 
-        return response.body.stages
+        return response.stages
     },
     updateDeal: async (dealId, pipelineId, pipelineStageId) => {
         const client = await hubspotClientHelper.getClient()
@@ -96,7 +96,7 @@ module.exports = {
         const response = await client.crm.deals.basicApi.update(dealId, deal)
         responseHelper.logResponse(response)
 
-        return response.body
+        return response
     },
     verifyPipeline: async (pipelineId) => {
         try {
@@ -178,7 +178,7 @@ module.exports = {
                 cardCreateRequest,
             )
 
-            await mysqlDbHelper.saveCardId(response.body.id)
+            await mysqlDbHelper.saveCardId(response.id)
         } else {
             const cardUpdateRequest = {
                 fetch,

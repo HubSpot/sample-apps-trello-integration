@@ -17,7 +17,7 @@ module.exports = {
         // Create OAuth 2.0 Access Token and Refresh Tokens
         // POST /oauth/v1/token
         // https://developers.hubspot.com/docs/api/working-with-oauth
-        const result = await hubspotClient.oauth.defaultApi.createToken(
+        const result = await hubspotClient.oauth.tokensApi.createToken(
             REFRESH_TOKEN,
             undefined,
             undefined,
@@ -26,7 +26,7 @@ module.exports = {
             tokensData.refresh_token,
         )
 
-        tokensData = result.body
+        tokensData = result
         console.log('Updated tokens', tokensData)
         await mysqlDbHelper.updateHubspotTokensData(tokensData)
         hubspotClient.setAccessToken(tokensData.accessToken)

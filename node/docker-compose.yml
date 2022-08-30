@@ -19,7 +19,7 @@ services:
   web:
     container_name:  node-trello-app-web
     env_file:
-      - src/.env
+      - .env
     environment:
       REDIS_HOST: redis
       MYSQL_HOST: db

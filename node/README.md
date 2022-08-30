@@ -28,7 +28,7 @@ Make sure you have [Ngrok](https://ngrok.com/) installed
 The best way to run this project (with the least configuration), is using docker cli.
 
 ```bash
-docker-compose -f  ../docker-compose.yml up --build
+docker-compose up --build
 ```
 Copy the Redirect URL from the console and update your application to use it.
 Give the change some time to propagate to the HubSpot OAuth servers.

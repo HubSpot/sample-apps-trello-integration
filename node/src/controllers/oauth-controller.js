@@ -90,7 +90,7 @@ exports.getRouter = () => {
             // POST /oauth/v1/token
             // https://developers.hubspot.com/docs/api/working-with-oauth
             console.log('Retrieving access token by code:', code)
-            const result = await hubspotClient.oauth.defaultApi.createToken(
+            const result = await hubspotClient.oauth.tokensApi.createToken(
                 'authorization_code',
                 code,
                 redirectUrl,
@@ -100,7 +100,7 @@ exports.getRouter = () => {
             responseHelper.logResponse(result)
             // Set token for the
             // https://www.npmjs.com/package/@hubspot/api-client
-            const tokensData = result.body
+            const tokensData = result
             await mysqlDbHelper.saveHubspotTokensData(tokensData)
             hubspotClient.setAccessToken(tokensData.accessToken)
 
