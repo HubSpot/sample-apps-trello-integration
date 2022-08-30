@@ -1,6 +1,6 @@
 const SIGNATURE_HEADER = 'X-HubSpot-Signature'
 const SIGNATURE_VERSION_HEADER = 'X-HubSpot-Signature-Version'
-const hubspotClientHelper = require('../helpers/hubspot-client-helper')
+const hubspot = require('@hubspot/api-client')
 const mysqlDbHelper = require('../helpers/mysql-db-helper')
 const _ = require('lodash')
 
@@ -12,17 +12,16 @@ module.exports = async (req, res, next) => {
         const signature = req.header(SIGNATURE_HEADER)
         const clientSecret = process.env.HUBSPOT_CLIENT_SECRET
         const signatureVersion = req.header(SIGNATURE_VERSION_HEADER)
-        const hubspotClient = await hubspotClientHelper.getClient()
 
         if (
-            hubspotClient.webhooks.validateSignature(
-                signature,
-                clientSecret,
-                requestBody,
-                signatureVersion,
-                webhooksUrl,
-                req.method,
-            )
+            hubspot.Signature.isValid({
+                signature: signature,
+                clientSecret: clientSecret,
+                requestBody: requestBody,
+                signatureVersion: signatureVersion,
+                url: webhooksUrl,
+                method: req.method
+            })
         )
             return next()
     } catch (e) {
