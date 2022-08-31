@@ -68,7 +68,6 @@ exports.getRouter = () => {
     router.get('/trello/token/:token', async (req, res) => {
         try {
             const token = _.get(req, 'params.token')
-            console.log('Trello token', token)
 
             await mysqlDbHelper.saveTrelloToken(token)
 
@@ -97,7 +96,6 @@ exports.getRouter = () => {
                 HUBSPOT_CLIENT_ID,
                 HUBSPOT_CLIENT_SECRET,
             )
-            responseHelper.logResponse(result)
             // Set token for the
             // https://www.npmjs.com/package/@hubspot/api-client
             const tokensData = result
