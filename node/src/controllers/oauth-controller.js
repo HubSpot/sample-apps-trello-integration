@@ -35,8 +35,8 @@ exports.getRouter = () => {
             // https://www.npmjs.com/package/@hubspot/api-client#obtain-your-authorization-url
             console.log('Creating authorization Url')
             const authorizationUrl = hubspotClient.oauth.getAuthorizationUrl(HUBSPOT_CLIENT_ID, redirectUrl, SCOPES)
-            console.log('Authorization Url', authorizationUrl)
-
+            console.log('Redirect to Authorization Url')
+            
             res.redirect(authorizationUrl)
         } catch (e) {
             handleError(e, res)
@@ -48,7 +48,7 @@ exports.getRouter = () => {
             const redirectUrl = await trelloOauthHelper.getOauthRedirectUri()
             console.log('Creating authorization Url')
             const authorizationUrl = trelloOauthHelper.getAuthUrl(TRELLO_API_KEY, redirectUrl)
-            console.log('Authorization Url', authorizationUrl)
+            console.log('Redirect to Authorization Url')
 
             res.redirect(authorizationUrl)
         } catch (e) {
