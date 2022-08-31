@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  db:
+    container_name:  node-trello-app-db
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mappings
+      MYSQL_USER: mappings
+      MYSQL_PASSWORD: mappings
+    logging:
+      driver: none
+  web:
+    container_name:  node-trello-app-web
+    env_file:
+      - .env
+    environment:
+      REDIS_HOST: redis
+      MYSQL_HOST: db
+      MYSQL_DATABASE: mappings
+      MYSQL_USER: mappings
+      MYSQL_PASSWORD: mappings
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+      - /app/src/node_modules
+      - ./db:/app/db
+      - ./tools:/app/tools
+    ports:
+      - 3000:3000
+    command: ../tools/wait-for-it.sh db:3306 -t 60 --strict -- npm run dev
+    depends_on:
+      - db
